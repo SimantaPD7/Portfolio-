@@ -44,6 +44,8 @@ const SEED = {
     name: "SPIDYCODEZ",
     role: "PYTHON // VISION // AI",
     img: "profile.jpg",
+    site: "https://simantapd7.github.io/port/",
+    siteLabel: "VIEW",
     text: "By day a quiet student, by night a builder of machines that see. I train computer-vision models, wire up automation pipelines and ship web systems that feel like comic panels. Every repo is a case file; every bug is a villain with a weakness.",
     code: "class Spidy(Developer):\n    def __init__(self):\n        self.stack = ['python', 'opencv', 'js']\n        self.caffeine = float('inf')\n\n    def scan(self, problem):\n        return self.solve(problem, style='comic')",
     roles: ["Python Developer", "AI Enthusiast", "Computer Vision Creator", "Automation Architect"],
@@ -473,6 +475,19 @@ function renderBio() {
   $("#bio-role").textContent = b.role;
   $("#bio-text").textContent = b.text;
   $("#bio-code").textContent = b.code;
+
+  /* live site / domain link -> hidden automatically when no URL is set */
+  const url = (b.site || "").trim();
+  const label = (b.siteLabel || "VIEW").trim() || "VIEW";
+  const heroBtn = $("#site-btn"), cardBtn = $("#tc-site");
+  if (url) {
+    heroBtn.href = url; cardBtn.href = url;
+    heroBtn.textContent = label + " SITE";
+    $("#tc-site-label").textContent = label;
+    heroBtn.hidden = false; cardBtn.hidden = false;
+  } else {
+    heroBtn.hidden = true; cardBtn.hidden = true;
+  }
   const img = $("#profile-img");
   img.src = b.img;
   img.onerror = () => {
@@ -818,6 +833,7 @@ $("#conn-form").addEventListener("submit", e => {
 function fillBioForm() {
   const b = DATA.bio;
   $("#b-name").value = b.name; $("#b-role").value = b.role; $("#b-img").value = b.img;
+  $("#b-site").value = b.site || "";
   $("#b-text").value = b.text; $("#b-code").value = b.code;
   $("#b-roles").value = (b.roles || []).join(", ");
   $("#power-inputs").innerHTML = Object.entries(b.power).map(([k, v]) => `
@@ -830,6 +846,7 @@ $("#bio-form").addEventListener("submit", e => {
   $$("[data-pw]").forEach(i => power[i.dataset.pw] = Math.max(0, Math.min(7, +i.value || 0)));
   DATA.bio = {
     name: $("#b-name").value, role: $("#b-role").value, img: $("#b-img").value,
+    site: $("#b-site").value.trim(), siteLabel: DATA.bio.siteLabel || "VIEW",
     text: $("#b-text").value, code: $("#b-code").value,
     roles: $("#b-roles").value.split(",").map(s => s.trim()).filter(Boolean),
     power
