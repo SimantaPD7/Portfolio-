@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SPIDYCODEZ // Marvel Comics &amp; Tech HQ</title>
+<meta name="description" content="SpidyCodez - Python Developer, AI Enthusiast, Computer Vision Creator. A retro Marvel comics meets futuristic sci-fi tech portfolio." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Russo+One&family=Outfit:wght@300;400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== TEXTURE + CANVAS LAYERS ===== -->
+<div class="bg-halftone" aria-hidden="true"></div>
+<canvas id="space-canvas" aria-hidden="true"></canvas>
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- ===== HANGING SPIDER ===== -->
+<div id="hanging-spider" aria-hidden="true">
+  <div class="web-thread"></div>
+  <svg class="spider-svg" viewBox="0 0 100 100" width="46" height="46">
+    <g stroke="#ED1D24" stroke-width="3" fill="none" stroke-linecap="round" class="spider-legs">
+      <path d="M40 45 L18 30 L8 40" /><path d="M40 52 L14 50 L4 58" />
+      <path d="M40 59 L16 68 L8 80" /><path d="M42 65 L28 82 L24 94" />
+      <path d="M60 45 L82 30 L92 40" /><path d="M60 52 L86 50 L96 58" />
+      <path d="M60 59 L84 68 L92 80" /><path d="M58 65 L72 82 L76 94" />
+    </g>
+    <ellipse cx="50" cy="58" rx="16" ry="19" fill="#111" stroke="#ED1D24" stroke-width="3" />
+    <circle cx="50" cy="38" r="10" fill="#111" stroke="#ED1D24" stroke-width="3" />
+    <circle cx="46" cy="36" r="2.6" fill="#FFEB3B" /><circle cx="54" cy="36" r="2.6" fill="#FFEB3B" />
+  </svg>
+</div>
+
+<!-- ===== NAV ===== -->
+<header id="nav">
+  <div class="nav-inner">
+    <a href="#hero" id="logo" class="magnetic">SPIDY<span>CODEZ</span></a>
+    <nav class="nav-links" id="nav-links">
+      <a href="#about">ORIGIN</a>
+      <a href="#skills">POWERS</a>
+      <a href="#projects">FILES</a>
+      <a href="#connect">CONNECT</a>
+    </nav>
+    <div class="cca-badge" title="Comics Code Authority">
+      <span class="cca-top">APPROVED BY THE</span>
+      <span class="cca-mid">SPIDYCODEZ</span>
+      <span class="cca-bot">CODE AUTHORITY</span>
+    </div>
+    <button id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="public-site">
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-wrap">
+    <p class="issue-line">ISSUE #001 &nbsp;&bull;&nbsp; VOL. 2026 &nbsp;&bull;&nbsp; $0.12</p>
+    <div class="title-block"><h1>SPIDYCODEZ</h1></div>
+    <div class="speech-bubble">
+      <span id="typewriter"></span><span class="caret">_</span>
+    </div>
+    <p class="hero-sub">Building computer-vision tools, AI experiments and web systems from a
+      basement lab somewhere between Queens and the terminal.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary magnetic">ENTER PANEL</a>
+      <a href="mailto:hello@spidycodez.dev" class="btn btn-ghost magnetic">SEND EMAIL</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL &darr;</div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <h2 class="section-title" data-kicker="MEANWHILE...">THE ORIGIN STORY</h2>
+  <div class="about-grid">
+    <div class="trading-card comic-card">
+      <div class="tc-head">FILE PHOTO</div>
+      <div class="tc-frame"><img id="profile-img" src="profile.jpg" alt="Profile portrait" /></div>
+      <div class="tc-name" id="bio-name">SPIDYCODEZ</div>
+      <div class="tc-role" id="bio-role">PYTHON // VISION // AI</div>
+    </div>
+
+    <div class="about-col">
+      <div class="console comic-card">
+        <div class="console-bar"><i></i><i></i><i></i><span>diagnostic.py</span></div>
+        <pre id="bio-code"></pre>
+      </div>
+      <p class="bio-text" id="bio-text"></p>
+
+      <div class="power-grid comic-card">
+        <div class="pg-title">POWER GRID</div>
+        <div id="power-rows"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="section">
+  <h2 class="section-title" data-kicker="SUDDENLY...">SUPER POWERS</h2>
+  <div class="skills-grid" id="skills-grid"></div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="section">
+  <h2 class="section-title" data-kicker="SECRET FILES...">CLASSIFIED ARCHIVE</h2>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
+
+<!-- ===== CONNECT ===== -->
+<section id="connect" class="section">
+  <h2 class="section-title" data-kicker="AND NOW...">THE COLLECTOR'S SHELF</h2>
+  <div class="connect-grid" id="connect-grid"></div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">SPIDY<span>CODEZ</span></div>
+    <p>With great source code comes great responsibility.</p>
+    <div class="barcode-box">
+      <div class="barcode" aria-hidden="true"></div>
+      <div class="barcode-meta">
+        <span>07 &nbsp;2026</span>
+        <a href="#" id="mainframe-link">[ SECURE MAINFRAME ACCESS ]</a>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2026 SPIDYCODEZ &bull; ALL PANELS RESERVED</p>
+  </div>
+</footer>
+</main>
+
+<!-- ===== SCHEMATIC MODAL ===== -->
+<div id="schematic-modal" class="modal" role="dialog" aria-modal="true" aria-label="Project schematics">
+  <div class="modal-panel comic-card">
+    <button class="modal-close" id="modal-close">ABORT PANEL &times;</button>
+    <div class="modal-body">
+      <div class="blueprint">
+        <div class="bp-label">BLUEPRINT VIEWPORT</div>
+        <svg id="bp-svg" viewBox="0 0 300 220" aria-hidden="true"></svg>
+      </div>
+      <div class="modal-info">
+        <div class="m-case" id="m-case">CASE #000</div>
+        <h3 id="m-title">PROJECT</h3>
+        <div class="tag-row" id="m-tags"></div>
+        <p id="m-desc"></p>
+        <div class="console">
+          <div class="console-bar"><i></i><i></i><i></i><span>snippet.py</span></div>
+          <pre id="m-code"></pre>
+        </div>
+        <div class="modal-actions">
+          <a id="m-github" class="btn btn-primary" href="#" target="_blank" rel="noopener">CLONE SCHEMATICS</a>
+          <a id="m-demo" class="btn btn-ghost" href="#" target="_blank" rel="noopener">PLAY ONLINE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOGIN TERMINAL ===== -->
+<div id="login-modal" class="modal" role="dialog" aria-modal="true" aria-label="Mainframe login">
+  <form class="term-panel" id="login-form">
+    <div class="term-head">S.H.I.E.L.D. // SECURE MAINFRAME</div>
+    <p class="term-warn">! WARNING: UNAUTHORIZED ACCESS IS MONITORED AND LOGGED.</p>
+    <label>OPERATIVE ID<input type="text" id="user-in" autocomplete="off" placeholder="spidycodez" /></label>
+    <label>CLEARANCE KEY<input type="password" id="pass-in" autocomplete="off" placeholder="••••••" /></label>
+    <p class="term-err" id="login-err"></p>
+    <div class="term-actions">
+      <button type="submit" class="btn btn-primary">AUTHENTICATE</button>
+      <button type="button" class="btn btn-ghost" id="login-cancel">CANCEL</button>
+    </div>
+  </form>
+</div>
+
+<!-- ===== ADMIN MAINFRAME ===== -->
+<div id="mainframe" hidden>
+  <div class="mf-top">
+    <div class="mf-brand">// S.H.I.E.L.D. MAINFRAME CONTROL CENTER</div>
+    <div class="mf-top-actions">
+      <span class="mf-storage" id="mf-storage">STORAGE: LOCAL</span>
+      <button class="btn btn-primary" id="save-all">SAVE ALL CHANGES</button>
+      <button class="btn btn-ghost" id="logout">LOG OUT</button>
+    </div>
+  </div>
+  <div class="mf-tabs">
+    <button class="mf-tab active" data-tab="diag">SYSTEM DIAGNOSTICS</button>
+    <button class="mf-tab" data-tab="proj">MANAGE PROJECTS</button>
+    <button class="mf-tab" data-tab="skill">MANAGE SKILLS</button>
+    <button class="mf-tab" data-tab="bio">EDIT BIO / STATS</button>
+    <button class="mf-tab" data-tab="conn">MANAGE CONNECT</button>
+  </div>
+
+  <section class="mf-pane active" id="tab-diag">
+    <div class="gauges" id="gauges"></div>
+    <div class="log-box"><div id="log-lines"></div></div>
+  </section>
+
+  <section class="mf-pane" id="tab-proj">
+    <div class="mf-cols">
+      <form class="mf-form" id="proj-form">
+        <h4>PROJECT RECORD</h4>
+        <input type="hidden" id="p-id" />
+        <label>TITLE<input id="p-title" required /></label>
+        <label>CASE NO<input id="p-case" placeholder="CASE #014" /></label>
+        <label>STATUS<select id="p-status"><option>ACTIVE</option><option>CLASSIFIED</option><option>ARCHIVED</option></select></label>
+        <label>TECH TAGS (comma separated)<input id="p-tech" /></label>
+        <label>GITHUB LINK<input id="p-github" /></label>
+        <label>DEMO LINK<input id="p-demo" /></label>
+        <label>DESCRIPTION<textarea id="p-desc" rows="3"></textarea></label>
+        <label>DIAGNOSTIC SNIPPET<textarea id="p-code" rows="4"></textarea></label>
+        <div class="term-actions">
+          <button class="btn btn-primary" type="submit">COMMIT RECORD</button>
+          <button class="btn btn-ghost" type="button" data-reset="proj-form">CLEAR</button>
+        </div>
+      </form>
+      <div class="mf-list" id="proj-list"></div>
+    </div>
+  </section>
+
+  <section class="mf-pane" id="tab-skill">
+    <div class="mf-cols">
+      <form class="mf-form" id="skill-form">
+        <h4>SKILL RECORD</h4>
+        <input type="hidden" id="s-id" />
+        <label>NAME<input id="s-name" required /></label>
+        <label>BADGE / PLATFORM<input id="s-badge" placeholder="LANGUAGE" /></label>
+        <label>PROFICIENCY %<input id="s-level" type="number" min="0" max="100" value="80" /></label>
+        <label>DESCRIPTION<textarea id="s-desc" rows="3"></textarea></label>
+        <label>TOOLTIP CODE<input id="s-code" placeholder="import cv2" /></label>
+        <div class="term-actions">
+          <button class="btn btn-primary" type="submit">COMMIT RECORD</button>
+          <button class="btn btn-ghost" type="button" data-reset="skill-form">CLEAR</button>
+        </div>
+      </form>
+      <div class="mf-list" id="skill-list"></div>
+    </div>
+  </section>
+
+  <section class="mf-pane" id="tab-bio">
+    <form class="mf-form wide" id="bio-form">
+      <h4>BIOGRAPHICAL RECORD</h4>
+      <label>CODENAME<input id="b-name" /></label>
+      <label>ROLE LINE<input id="b-role" /></label>
+      <label>PROFILE IMAGE SRC<input id="b-img" /></label>
+      <label>BIO TEXT<textarea id="b-text" rows="4"></textarea></label>
+      <label>CONSOLE SNIPPET<textarea id="b-code" rows="5"></textarea></label>
+      <label>TYPEWRITER ROLES (comma separated)<input id="b-roles" /></label>
+      <div class="power-inputs" id="power-inputs"></div>
+      <div class="term-actions"><button class="btn btn-primary" type="submit">COMMIT RECORD</button></div>
+    </form>
+  </section>
+
+  <section class="mf-pane" id="tab-conn">
+    <div class="mf-cols">
+      <form class="mf-form" id="conn-form">
+        <h4>SOCIAL COVER RECORD</h4>
+        <input type="hidden" id="c-id" />
+        <label>PLATFORM<input id="c-platform" required /></label>
+        <label>ISSUE NO<input id="c-issue" placeholder="#04" /></label>
+        <label>HEADLINE<input id="c-headline" /></label>
+        <label>TEASER<textarea id="c-teaser" rows="2"></textarea></label>
+        <label>STAMP<input id="c-stamp" placeholder="MINT" /></label>
+        <label>PRICE<input id="c-price" placeholder="$0.12" /></label>
+        <label>ICON CLASS<input id="c-icon" placeholder="fa-brands fa-github" /></label>
+        <label>URL<input id="c-url" /></label>
+        <div class="term-actions">
+          <button class="btn btn-primary" type="submit">COMMIT RECORD</button>
+          <button class="btn btn-ghost" type="button" data-reset="conn-form">CLEAR</button>
+        </div>
+      </form>
+      <div class="mf-list" id="conn-list"></div>
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
